@@ -4,12 +4,12 @@ name: Releases
 
 # Controls when the workflow will run
 on:
- push:
+  push:
     branches:
       - main
       - uat
- release:
-     types: [published,edited,deleted]
+  release:
+    types: [published, edited, deleted]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
