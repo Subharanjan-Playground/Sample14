@@ -1,13 +1,12 @@
-name: Example Workflow
-
+name: Repository Dispatch
 on:
-  push:
-    branches:
-      - main
-
+  repository_dispatch:
+    types: [my-event]
 jobs:
-  example_job:
+  myEvent:
     runs-on: ubuntu-latest
     steps:
-      - name: Show current time in IST
-        run: echo "The current time in India is $(TZ=Asia/Kolkata date)"
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }}
