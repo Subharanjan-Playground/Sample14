@@ -1,12 +1,13 @@
 name: Repository Dispatch
-on:
-  repository_dispatch:
-    push:
-    branches:
-      - main
-      - uat
+on: 
+
   release:
     types: [published, edited, deleted]
+    repository_dispatch:
+         push:
+           branches:
+            - main
+            - uat
 jobs:
   myEvent:
     runs-on: ubuntu-latest
