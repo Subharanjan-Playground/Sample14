@@ -23,3 +23,16 @@ jobs:
           repository: Subharanjan-Playground/Sample14
           event-type: my-event
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+      - run: |
+          echo ${{ github.event_name.ref_type }}
+          echo ${{ github.event.release.id }}
+          echo ${{ github.event_name }}
+          echo "This event was triggered by" 
+          echo ${{ github.actor }}
+          echo "Tag name "${{ github.ref_name }}
+          echo "Actor name "${{ github.triggering_actor }}
+          echo ${{ github.ref }}
+          echo ${{ github.event.release.github_ref }}
+          echo "Release Name: ${{ github.event.release.name }} Description: ${{ github.event.release.body }}" 
+          echo "Release referred branch ${{ github.event.release.target_commitish }}"
