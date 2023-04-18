@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-#         with:
-#           ref: ${{ github.event.client_payload.ref }}
-#       - run: echo ${{ github.event.client_payload.sha }}
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }}
       
-#       - name: Repository Dispatch
-#         uses: peter-evans/repository-dispatch@v2
-#         with:
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           repository: Subharanjan-Playground/Sample14
-#           event-type: my-event
-#           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: Subharanjan-Playground/Sample14
+          event-type: my-event
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
       - run: |
           echo ${{ github.event_name.ref_type }}
