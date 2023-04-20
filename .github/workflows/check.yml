@@ -1,6 +1,5 @@
-name: Repository Dispatch
+name: Release Check for uat
 on: 
-
   release:
     types: [published, edited, deleted]
     repository_dispatch:
@@ -12,18 +11,18 @@ jobs:
   myEvent:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }}
+#       - uses: actions/checkout@v3
+#         with:
+#           ref: ${{ github.event.client_payload.ref }}
+#       - run: echo ${{ github.event.client_payload.sha }}
       
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.PAT }}
-          repository: Subharanjan-Playground/Sample14
-          event-type: my-event
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+#       - name: Repository Dispatch
+#         uses: peter-evans/repository-dispatch@v2
+#         with:
+#           token: ${{ secrets.PAT }}
+#           repository: Subharanjan-Playground/Sample14
+#           event-type: my-event
+#           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
       - run: |
           echo ${{ github.event_name.ref_type }}
